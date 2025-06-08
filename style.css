@@ -1,0 +1,161 @@
+/* Farbpalette und Grunddesign */
+body {
+    margin: 0;
+    background-color: #151515;
+    color: #FFFFFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  
+  main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+  
+  h1 img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 40px auto;
+  }
+  
+  h2 {
+    color: #FFFFFF;
+    border-bottom: 2px solid #697565;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    margin-bottom: 20px;
+    color: #FFFFFF;
+  }
+  
+  /* Icons Styles */
+  .icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 40px;
+    color: #FFFFFF;
+    margin-bottom: 40px;
+    justify-content: center;
+  }
+  
+  /* Github Stats */
+  .github-stats img {
+    max-width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: none !important;
+  }
+  
+  /* Link Style */
+  .link-white {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .link-white:hover {
+    text-decoration: underline;
+  }
+  
+  /* Kontaktformular */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    background-color: #1E1E1E;
+    border: none;
+    padding: 12px 15px;
+    color: #FFFFFF;
+    border-radius: 5px;
+    font-size: 1em;
+    resize: vertical;
+  }
+  
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: #697565;
+  }
+  
+  /* Button Basis */
+  #send-button {
+    position: relative;
+    background-color: #697565;
+    color: #FFFFFF;
+    border: none;
+    padding: 14px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+  }
+  
+  #send-button .button-text {
+    display: inline-block;
+  }
+  
+  #send-button:hover:not(:disabled) {
+    background-color: #FFFFFF;
+    color: #151515;
+  }
+  
+  /* Spinner States */
+  #send-button.loading {
+    background-color: #697565;
+    color: transparent;
+    pointer-events: none;
+  }
+  
+  #send-button.loading .button-text {
+    visibility: hidden;
+  }
+  
+  #send-button.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1em;
+    height: 1em;
+    margin: -0.5em 0 0 -0.5em;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #FFFFFF;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Spinner Animation */
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    background-color: #151515;
+    color: #FFFFFF;
+    border-top: 1px solid #3C3D37;
+  }
+  
+  footer a {
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+  
+  footer a:hover,
+  footer a:focus {
+    text-decoration: underline;
+  }
+  

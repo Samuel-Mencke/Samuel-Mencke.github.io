@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - Samuel Mencke</title>
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("x-DDCr60rIyMxAR4M");
+    })();
+  </script>
+
+  <style>
+    /* Einfaches Loading-Styles für den Button */
+    #send-button.loading {
+      opacity: 0.7;
+      cursor: not-allowed;
+      position: relative;
+    }
+    #send-button.loading .button-text {
+      visibility: hidden;
+    }
+    #send-button.loading::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      margin: -10px 0 0 -10px;
+      border: 3px solid #fff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1 align="center">
+        <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=45&center=true&vCenter=true&width=600&height=80&duration=4000&color=FFFFFF&lines=Contact+Me!" alt="Contact Me" />
+      </h1>
+    </header>
+
+    <section id="contact">
+      <h2>📬 Contact Me</h2>
+      <form id="contact-form" class="contact-form">
+        <input type="text" name="name" placeholder="Dein Name" required />
+        <input type="email" name="email" placeholder="Deine Email" required />
+        <textarea name="message" placeholder="Deine Nachricht" required></textarea>
+        <input type="hidden" name="time" />
+        <button type="submit" id="send-button">
+          <span class="button-text">Senden</span>
+        </button>
+      </form>
+      <p style="text-align: center; margin-top: 20px;">
+        <a href="index.html" class="link-white">← Zurück zur Hauptseite</a>
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const btn  = document.getElementById('send-button');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Zeitstempel vor dem Senden setzen
+      this.elements['time'].value = new Date().toISOString();
+
+      btn.disabled = true;
+      btn.classList.add('loading');
+
+      emailjs.sendForm('service_cmxp62x', 'template_9a5k7w9', this)
+        .then(() => {
+          btn.classList.remove('loading');
+          btn.innerHTML = '<span class="button-text">Gesendet!</span>';
+          form.reset();
+          btn.disabled = false;
+        }, (error) => {
+          alert('Fehler beim Senden. Versuche es später erneut.');
+          console.error(error);
+          btn.disabled = false;
+          btn.classList.remove('loading');
+          btn.innerHTML = '<span class="button-text">Senden</span>';
+        });
+    });
+  </script>
+</body>
+</html>
